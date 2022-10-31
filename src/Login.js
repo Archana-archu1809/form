@@ -12,10 +12,11 @@ function Login(){
     
           password: values.password,
         }).then((response) => {
+          console.log(response)
           if (response.data.message) {
             setLoginStatus(response.data.message);
           } else {
-            setLoginStatus("");
+            setLoginStatus(response.data[0].email);
           }
         });
       };
