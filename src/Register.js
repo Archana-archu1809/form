@@ -1,25 +1,34 @@
 import {Form,Input, Button,Row,Col, InputNumber, Radio} from 'antd'
 import Axios from "axios";
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom"
 function Register(){
 
-
+const [registerStatus,setRegisterStatus]=useState("");
+const navigate=useNavigate();
   const onFinish=(values)=>{
-    Axios.post("http://localhost:8000/Register",{
+    Axios.post("http://localhost:8000/register",{
       name:values.name,
       email:values.email,
       password:values.password,
       gender:values.gender,
-      experienc:values.experience,
+      experience:values.experience,
       technology:values.technology,
       rating:values.rating
     }).then((response)=>{
       console.log(response);
+      if(response.data.message){
+     setRegisterStatus(response.data.message)
+      }
       
     })
     console.log(values);
 
 
+  }
+  if(registerStatus === "thanks for registering"){
+    navigate("/");
   }
     return(
         <div>
@@ -73,7 +82,7 @@ function Register(){
           rules={[
             {
               required: true,
-              message: "Please input your Color",
+              message: "Please input your gender",
             },
           ]}
         label="Gender" name="gender">
@@ -118,6 +127,7 @@ function Register(){
             </Button>
           </Form.Item>
         </Form>
+        {registerStatus}
       </Col>
     </Row>
 
