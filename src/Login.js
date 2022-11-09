@@ -21,7 +21,7 @@ function Login(){
         });
       };
       const Register=()=>{
-        navigate("/")
+        navigate("/signup")
       }
 
     return(
