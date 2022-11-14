@@ -1,7 +1,6 @@
 import {Form,Input, Button,Row,Col, InputNumber, Radio} from 'antd'
 import Axios from "axios";
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import {useNavigate} from "react-router-dom"
 function Register(){
 
@@ -39,7 +38,7 @@ const navigate=useNavigate();
       style={{ minHeight: "100vh" }}
     >
       <Col>
-        <h1>Register</h1>
+      <h1 style={{color:"#33333",fontFamily:"'Josefin Sans', sans-serif",fontSize:"42px",fontWeight:"bold",lineHeight:1,textAlign:"center"}}>Register Form</h1>
         <Form autoComplete="off" onFinish={onFinish}>
           <Form.Item
             rules={[
@@ -48,10 +47,10 @@ const navigate=useNavigate();
                 message: "Please input your name",
               },
             ]}
-            label="Name"
+           
             name="name"
           >
-            <Input />
+            <Input placeholder='Name' />
           </Form.Item>
           <Form.Item
             rules={[
@@ -61,10 +60,10 @@ const navigate=useNavigate();
                 type: "email",
               },
             ]}
-            label="Email"
+            
             name="email"
           >
-            <Input />
+            <Input placeholder='Email' />
           </Form.Item>
           <Form.Item
             rules={[
@@ -73,10 +72,34 @@ const navigate=useNavigate();
                 message: "Please input your password!",
               },
             ]}
-            label="Password"
+         
             name="password"
           >
-            <Input.Password />
+            <Input.Password placeholder='Password'/>
+          </Form.Item>
+
+        
+          <Form.Item
+          rules={[
+            {required:true,message:"Please input your experience"}
+          ]}
+         
+          name="experience"
+          >
+            <Input placeholder='Experience' />
+
+          </Form.Item>
+          <Form.Item rules={[
+            {
+              required:true,
+              message:"Please input your technology"
+            }
+          ]} 
+         
+          name="technology"
+          >
+            <Input placeholder='Technology'/>
+
           </Form.Item>
           <Form.Item 
           rules={[
@@ -91,30 +114,12 @@ const navigate=useNavigate();
             <Radio value="Male"> Male </Radio>
           </Radio.Group>
         </Form.Item>
-        
-          <Form.Item
-          rules={[
-            {required:true,message:"Please input your experience"}
-          ]}
-          label="Experience"
-          name="experience"
-          >
-            <Input />
-
-          </Form.Item>
           <Form.Item rules={[
             {
               required:true,
               message:"Please input your technology"
             }
-          ]} 
-          label="Technology"
-          name="technology"
-          >
-            <Input />
-
-          </Form.Item>
-          <Form.Item label="Rating" name="rating">
+          ]}  label="Rating" name="rating">
           <Radio.Group>
             <Radio value="Basic Awareness"> Basic Awareness </Radio>
             <Radio value="Moderate Experience"> Moderate Experience </Radio>
@@ -122,7 +127,7 @@ const navigate=useNavigate();
           </Radio.Group>
         </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{width:"100%"}}>
               Register
             </Button>
           </Form.Item>

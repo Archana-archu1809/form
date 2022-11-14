@@ -1,3 +1,4 @@
+import { Card } from "antd";
 import  Axios  from "axios"
 import { useEffect, useState } from "react"
 
@@ -11,7 +12,7 @@ function AdminSide(){
 
     return(
         <div>
-{data.map(data=><h1 key={data.id}>{data.email}</h1>)}
+{data.map((data)=><Card key={data.id}>{data.email}</Card>)}
         </div>
 
     )

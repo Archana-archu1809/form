@@ -31,9 +31,10 @@ function Login(){
       justify="center"
       align="middle"
       style={{ minHeight: "100vh" }}
+     
     >
       <Col>
-        <h1>Login</h1>
+        <h1 style={{color:"#33333",fontFamily:"'Josefin Sans', sans-serif",fontSize:"42px",fontWeight:"bold",lineHeight:1,}}>Welcome Back</h1>
         <Form autoComplete="off" onFinish={onFinish}>
           <Form.Item
             rules={[
@@ -43,10 +44,9 @@ function Login(){
                 type: "email",
               },
             ]}
-            label="Email"
             name="email"
           >
-            <Input />
+            <Input placeholder="email" />
           </Form.Item>
           <Form.Item
             rules={[
@@ -55,19 +55,18 @@ function Login(){
                 message: "Please input your password!",
               },
             ]}
-            label="Password"
             name="password"
           >
-            <Input.Password />
+            <Input.Password placeholder="password" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{width:"100%"}}>
              Login
             </Button>
           </Form.Item>
         </Form>
         <h3>{loginStatus}</h3>
-        <Button onClick={Register}>Register</Button>
+        <Button onClick={Register} style={{width:"100%"}}>Register</Button>
       </Col>
     </Row>
             </div>
