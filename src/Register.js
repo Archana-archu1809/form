@@ -2,6 +2,8 @@ import {Form,Input, Button,Row,Col, InputNumber, Radio} from 'antd'
 import Axios from "axios";
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom"
+import { ToastContainer, toast } from 'react-toast'
+import "react-toastify/dist/ReactToastify.css";
 function Register(){
 
 const [registerStatus,setRegisterStatus]=useState("");
@@ -19,6 +21,7 @@ const navigate=useNavigate();
       console.log(response);
       if(response.data.message){
      setRegisterStatus(response.data.message)
+     toast(response.data.message)
       }
       
     })
@@ -133,9 +136,11 @@ const navigate=useNavigate();
           </Form.Item>
         </Form>
         {registerStatus}
+        <ToastContainer/>
+
       </Col>
     </Row>
-
+  
         </div>
     )
 }

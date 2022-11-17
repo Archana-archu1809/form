@@ -1,3 +1,4 @@
+import { ToastContainer, toast } from "react-toastify";
 import  Axios  from "axios";
 import {Input, Form, Button, Row, Col} from "antd";
 import { useState } from "react";
@@ -6,31 +7,58 @@ import {useNavigate} from "react-router-dom"
 function Login(){
     const [loginStatus,setLoginStatus]=useState("");
     const navigate=useNavigate();
+   
     const onFinish = (values) => {
+     
         Axios.post("http://localhost:8000/login", {
+         
           email: values.email,
     
           password: values.password,
+        
         }).then((response) => {
-          console.log(response)
-          if (response.data.message) {
-            setLoginStatus(response.data.message);
-          } else {
-            setLoginStatus(response.data[0].email);
+          if (response.data.id) {
+            setLoginStatus(response.data.id);
+            toast("hi")
+          
           }
+        
         });
+     
       };
       const Register=()=>{
-        navigate("/signup")
+       
+          navigate("/signup")
+
+
+        
+    
+      
+      
+        
+
+        
+      
       }
+      localStorage.setItem("key", loginStatus)
+     
+      if(loginStatus ===1){
+        navigate("/data")
+        
+      }
+      if (loginStatus > 1){
+        navigate("/datas")
+      }
+  
 
     return(
-        <div>
+        
              <Row
       type="flex"
       justify="center"
       align="middle"
       style={{ minHeight: "100vh" }}
+     
      
     >
       <Col>
@@ -67,9 +95,11 @@ function Login(){
         </Form>
         <h3>{loginStatus}</h3>
         <Button onClick={Register} style={{width:"100%"}}>Register</Button>
+        
+          <ToastContainer/>
       </Col>
     </Row>
-            </div>
+           
     )
 }
 export default Login;

@@ -1,4 +1,4 @@
-import { Card } from "antd";
+import { Card, Row,Col } from "antd";
 import  Axios  from "axios"
 import { useEffect, useState } from "react"
 
@@ -11,9 +11,14 @@ function AdminSide(){
     },[])
 
     return(
-        <div>
-{data.map((data)=><Card key={data.id}>{data.email}</Card>)}
-        </div>
+        <Row type="flex"
+        justify="center"
+        align="middle"
+        style={{ minHeight: "100vh" }}>
+            <Col>
+{data.map((data)=><Card style={{width:300}} key={data.id}>{data.email}</Card>)}
+</Col>
+        </Row>
 
     )
 }
