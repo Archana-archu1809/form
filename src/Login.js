@@ -1,6 +1,6 @@
-import { ToastContainer, toast } from "react-toastify";
+
 import  Axios  from "axios";
-import {Input, Form, Button, Row, Col} from "antd";
+import {Input, Form, Button, Row, Col,notification } from "antd";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 
@@ -19,7 +19,7 @@ function Login(){
         }).then((response) => {
           if (response.data.id) {
             setLoginStatus(response.data.id);
-            toast("hi")
+            
           
           }
         
@@ -30,20 +30,15 @@ function Login(){
        
           navigate("/signup")
 
-
+       
         
-    
-      
-      
-        
-
-        
-      
-      }
-      localStorage.setItem("key", loginStatus)
+ }
+      localStorage.setItem("key", loginStatus);
      
       if(loginStatus ===1){
-        navigate("/data")
+        navigate("/admin");
+      
+       
         
       }
       if (loginStatus > 1){
@@ -54,15 +49,12 @@ function Login(){
     return(
         
              <Row
-      type="flex"
-      justify="center"
-      align="middle"
-      style={{ minHeight: "100vh" }}
+      className="row"
      
      
     >
-      <Col>
-        <h1 style={{color:"#33333",fontFamily:"'Josefin Sans', sans-serif",fontSize:"42px",fontWeight:"bold",lineHeight:1,}}>Welcome Back</h1>
+      <Col sm={24} md={12}>
+        <h1 className="header">Welcome Back</h1>
         <Form autoComplete="off" onFinish={onFinish}>
           <Form.Item
             rules={[
@@ -74,7 +66,7 @@ function Login(){
             ]}
             name="email"
           >
-            <Input placeholder="email" />
+            <Input placeholder="Email" />
           </Form.Item>
           <Form.Item
             rules={[
@@ -85,18 +77,17 @@ function Login(){
             ]}
             name="password"
           >
-            <Input.Password placeholder="password" />
+            <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" style={{width:"100%"}}>
+            <Button type="primary" htmlType="submit" className="button">
              Login
             </Button>
           </Form.Item>
         </Form>
-        <h3>{loginStatus}</h3>
-        <Button onClick={Register} style={{width:"100%"}}>Register</Button>
+        <Button onClick={Register} type="primary" danger className="button">Register</Button>
         
-          <ToastContainer/>
+         
       </Col>
     </Row>
            
