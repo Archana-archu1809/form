@@ -15,7 +15,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
   
- 
+ console.log("data")
   return (
     <div className="App">
       <Layout><Sider><h1 className='h2'>Resume</h1></Sider>
