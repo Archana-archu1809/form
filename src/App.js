@@ -11,11 +11,13 @@ import Datas from "./data"
 import { Layout, Row, Button } from 'antd';
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom"
+import Index from './components/register';
+import View from './components/view'
 const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
   
- console.log("data")
+ 
   return (
     <div className="App">
       <Layout><Sider><h1 className='h2'>Resume</h1></Sider>
@@ -31,9 +33,9 @@ function App() {
           
        
          
-          <Route path="/signup" element={<Register/>} />
+          <Route path="/signup" element={<Index/>} />
           <Route path="/admin" element={<AdminSide />} />
-          <Route path="/datas" element={<Datas/>} />
+          <Route path="/datas" element={<View/>} />
           
 
          
